@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>شيكلا | متجر أزياء العبايات والحقائب</title>
+    <title>شيكلا | Chicella - متجر أزياء العبايات والحقائب</title>
     <style>
         :root {
             --primary: #2C2C2C;
@@ -20,98 +20,118 @@
         header {
             background-color: var(--primary);
             color: white;
-            padding: 20px;
+            padding: 25px 20px;
             text-align: center;
         }
         header h1 {
             margin: 0;
-            font-size: 28px;
+            font-size: 32px;
             color: var(--accent);
+            letter-spacing: 1px;
+        }
+        header p {
+            margin: 5px 0 0 0;
+            font-size: 16px;
+            opacity: 0.9;
         }
         .hero {
             text-align: center;
-            padding: 40px 20px;
-            background-color: #f0f0f0;
+            padding: 50px 20px;
+            background-color: #f4f4f4;
+            border-bottom: 1px solid #eee;
         }
         .hero h2 {
-            font-size: 32px;
+            font-size: 30px;
             margin-bottom: 10px;
+            color: var(--primary);
         }
-        
-        /* قسم المنتجات المحدث */
         .section-title {
             text-align: center;
             margin-top: 40px;
             color: var(--primary);
             font-size: 26px;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent);
+            margin: 10px auto 0 auto;
         }
         .products-grid {
             display: flex;
             justify-content: center;
-            gap: 30px;
-            padding: 20px;
+            gap: 25px;
+            padding: 30px 20px;
             flex-wrap: wrap;
         }
         .product-card {
             background: white;
-            border: 1px solid #eee;
+            border: 1px solid #eef2f5;
             border-radius: 12px;
-            width: 280px;
+            width: 290px;
             text-align: center;
             padding: 15px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
             transition: 0.3s;
         }
         .product-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+        }
+        .product-img-wrapper {
+            width: 100%;
+            height: 340px;
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: #f9f9f9;
+            margin-bottom: 15px;
         }
         .product-img {
             width: 100%;
-            height: 250px;
-            background-color: #eaeaea;
-            border-radius: 8px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #888;
-            font-size: 14px;
-            margin-bottom: 15px;
+            height: 100%;
+            object-fit: cover;
         }
         .product-card h3 {
             color: var(--primary);
             margin: 10px 0 5px 0;
-            font-size: 20px;
+            font-size: 18px;
+            height: 44px;
+            overflow: hidden;
         }
         .price {
             color: #b51a1a;
             font-weight: bold;
-            font-size: 18px;
-            margin: 5px 0;
+            font-size: 20px;
+            margin: 10px 0;
         }
         .buy-btn {
             display: block;
             background-color: var(--primary);
             color: white;
-            padding: 10px;
+            padding: 12px;
             text-decoration: none;
             font-weight: bold;
             border-radius: 6px;
             margin-top: 15px;
             border: 1px solid var(--primary);
-            cursor: pointer;
             transition: 0.2s;
         }
         .buy-btn:hover {
-            background-color: transparent;
+            background-color: var(--accent);
             color: var(--primary);
+            border-color: var(--accent);
         }
         footer {
             text-align: center;
-            padding: 20px;
+            padding: 30px;
             background-color: var(--primary);
             color: white;
-            margin-top: 50px;
+            margin-top: 60px;
         }
+        footer p { margin: 5px 0; }
 
         /* تنسيق النافذة الترحيبية للعملاء الجدد */
         .welcome-popup {
@@ -144,7 +164,6 @@
             padding: 12px 30px; border-radius: 5px; cursor: pointer;
             font-weight: bold; margin-top: 10px; width: 100%;
         }
-        .close-popup-btn:hover { background: var(--accent); color: var(--primary); }
     </style>
 </head>
 <body>
@@ -153,7 +172,7 @@
     <div id="newCustomerPopup" class="welcome-popup">
         <div class="popup-content">
             <h3>مرحباً بكِ في زيارتكِ الأولى ✨</h3>
-            <p>يسعدنا انضمامكِ لمتجر شيكلا للأزياء والعبايات الفاخرة وحقائب الريزن! استمتعي بتصفح تشكيلتنا الجديدة الفريدة.</p>
+            <p>يسعدنا انضمامكِ لمتجر شيكلا للأزياء والعبايات الفاخرة ومشغولات الريزن الفريدة! استمتعي بتصفح تشكيلتنا الجديدة.</p>
             <p style="font-size: 14px; margin-bottom: 5px;">هدية ترحيبية خاصة لكِ (خصم 10%):</p>
             <div class="coupon-box">كود الخصم: CHICLA10</div>
             <button class="close-popup-btn" onclick="closePopup()">اكتشفي التشكيلة الآن</button>
@@ -161,39 +180,34 @@
     </div>
 
     <header>
-        <h1>شيكلا - Chicla</h1>
-        <p>متجر أزياء العبايات وحقائب الريزن الفاخرة</p>
+        <h1>شيكلا - Chicella</h1>
+        <p>وجهتكِ المتكاملة لإطلالة ساحرة وتفاصيل متميزة</p>
     </header>
 
     <section class="hero">
-        <h2>أناقة تليق بكِ</h2>
-        <p>اكتشفي أحدث تشكيلة من العبايات الراقية والحقائب المصنوعة يدوياً بحب</p>
+        <h2>أناقة تُحكى بتفاصيلها ✨</h2>
+        <p>نجمع لكِ أحدث صيحات الموضة والجمال، إلى جانب لمسات فنية فريدة من إكسسوارات الريزن المصنوعة يدوياً بكل حب</p>
     </section>
 
-    <!-- قسم المنتجات المعروضة -->
-    <h2 class="section-title">الأكثر مبيعاً ✨</h2>
+    <!-- قسم العبايات الحقيقية المربوط بمتجر سلة -->
+    <h2 class="section-title">جديد العبايات الفاخرة 🛍️</h2>
     <section class="products-grid">
-        <!-- المنتج الأول -->
+        
+        <!-- العباية الأولى المأخوذة من الرابط المرسل -->
         <div class="product-card">
-            <div class="product-img">[ صورة العباية ]</div>
-            <h3>عباية كلاسيك فاخرة</h3>
-            <p style="font-size:14px; color:#666;">قماش ملكي كوري مع تداخلات حرير</p>
-            <div class="price">250 ر.س</div>
-            <button class="buy-btn">إضافة للسلة</button>
+            <div class="product-img-wrapper">
+                <img src="https://salla.sa" alt="عباية سوداء بقصة بشت" class="product-img">
+            </div>
+            <h3>عباية سوداء بقصة بشت وتطريز فضي منثور</h3>
+            <div class="price">230 ر.س</div>
+            <a href="https://chicella.store" class="buy-btn" target="_blank">شراء الآن</a>
         </div>
 
-        <!-- المنتج الثاني -->
-        <div class="product-card">
-            <div class="product-img">[ صورة الحقيبة ]</div>
-            <h3>حقيبة ريزن يدوية</h3>
-            <p style="font-size:14px; color:#666;">تصميم فريد مدمج بكسر الذهب والورد</p>
-            <div class="price">180 ر.س</div>
-            <button class="buy-btn">إضافة للسلة</button>
-        </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 متجر شيكلا. جميع الحقوق محفوظة.</p>
+        <p>Chicella — شغف يُصاغ بإتقان… وأناقة تُحكى بتفاصيلها.</p>
+        <p>&copy; 2026 متجر شيكلا. صنع بإتقان على منصة سلة.</p>
     </footer>
 
     <script>
