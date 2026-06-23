@@ -30,82 +30,133 @@
         }
         .hero {
             text-align: center;
-            padding: 60px 20px;
+            padding: 40px 20px;
             background-color: #f0f0f0;
         }
         .hero h2 {
             font-size: 32px;
             margin-bottom: 10px;
         }
-        .categories {
+        
+        /* قسم المنتجات المحدث */
+        .section-title {
+            text-align: center;
+            margin-top: 40px;
+            color: var(--primary);
+            font-size: 26px;
+        }
+        .products-grid {
             display: flex;
             justify-content: center;
             gap: 30px;
-            padding: 40px 20px;
+            padding: 20px;
             flex-wrap: wrap;
         }
-        .card {
+        .product-card {
             background: white;
             border: 1px solid #eee;
-            border-radius: 8px;
+            border-radius: 12px;
             width: 280px;
             text-align: center;
-            padding: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            padding: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: 0.3s;
         }
-        .card h3 {
-            color: var(--primary);
-            font-size: 22px;
+        .product-card:hover {
+            transform: translateY(-5px);
         }
-        .btn {
-            display: inline-block;
-            background-color: var(--accent);
+        .product-img {
+            width: 100%;
+            height: 250px;
+            background-color: #eaeaea;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #888;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        .product-card h3 {
             color: var(--primary);
-            padding: 10px 20px;
+            margin: 10px 0 5px 0;
+            font-size: 20px;
+        }
+        .price {
+            color: #b51a1a;
+            font-weight: bold;
+            font-size: 18px;
+            margin: 5px 0;
+        }
+        .buy-btn {
+            display: block;
+            background-color: var(--primary);
+            color: white;
+            padding: 10px;
             text-decoration: none;
             font-weight: bold;
-            border-radius: 5px;
+            border-radius: 6px;
             margin-top: 15px;
+            border: 1px solid var(--primary);
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .buy-btn:hover {
+            background-color: transparent;
+            color: var(--primary);
         }
         footer {
             text-align: center;
             padding: 20px;
             background-color: var(--primary);
             color: white;
-            margin-top: 40px;
+            margin-top: 50px;
         }
 
-        /* تنسيق النافذة الترحيبية المنبثقة */
+        /* تنسيق النافذة الترحيبية للعملاء الجدد */
         .welcome-popup {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.6);
-            display: flex; justify-content: center; align-items: center;
+            background: rgba(0,0,0,0.7);
+            display: none;
+            justify-content: center; align-items: center;
             z-index: 9999;
         }
         .popup-content {
-            background: white; padding: 30px; border-radius: 12px;
-            text-align: center; max-width: 400px; width: 85%;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            background: white; padding: 35px; border-radius: 15px;
+            text-align: center; max-width: 420px; width: 85%;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.4);
             border: 2px solid var(--accent);
         }
-        .popup-content h3 { color: var(--primary); margin-top: 0; }
+        .popup-content h3 { color: var(--accent); margin-top: 0; font-size: 24px; }
+        .coupon-box {
+            background-color: #f3f3f3;
+            border: 1px dashed var(--accent);
+            padding: 10px;
+            margin: 15px 0;
+            font-weight: bold;
+            font-size: 18px;
+            color: var(--primary);
+            border-radius: 5px;
+        }
         .close-popup-btn {
             background: var(--primary); color: white; border: none;
-            padding: 10px 25px; border-radius: 5px; cursor: pointer;
-            font-weight: bold; margin-top: 15px; transition: 0.2s;
+            padding: 12px 30px; border-radius: 5px; cursor: pointer;
+            font-weight: bold; margin-top: 10px; width: 100%;
         }
         .close-popup-btn:hover { background: var(--accent); color: var(--primary); }
     </style>
 </head>
 <body>
 
-    <!-- النافذة الترحيبية المنبثقة -->
-    <div id="welcomePopup" class="welcome-popup">
+    <!-- النافذة الترحيبية للعملاء الجدد -->
+    <div id="newCustomerPopup" class="welcome-popup">
         <div class="popup-content">
-            <h3>مرحباً بكِ في متجر شيكلا ✨</h3>
-            <p>للأزياء والعبايات الفاخرة وحقائب الريزن! اكتشفي تشكيلتنا الجديدة الفريدة.</p>
-            <button class="close-popup-btn" onclick="closePopup()">اكتشفي الآن</button>
+            <h3>مرحباً بكِ في زيارتكِ الأولى ✨</h3>
+            <p>يسعدنا انضمامكِ لمتجر شيكلا للأزياء والعبايات الفاخرة وحقائب الريزن! استمتعي بتصفح تشكيلتنا الجديدة الفريدة.</p>
+            <p style="font-size: 14px; margin-bottom: 5px;">هدية ترحيبية خاصة لكِ (خصم 10%):</p>
+            <div class="coupon-box">كود الخصم: CHICLA10</div>
+            <button class="close-popup-btn" onclick="closePopup()">اكتشفي التشكيلة الآن</button>
         </div>
     </div>
 
@@ -119,16 +170,25 @@
         <p>اكتشفي أحدث تشكيلة من العبايات الراقية والحقائب المصنوعة يدوياً بحب</p>
     </section>
 
-    <section class="categories">
-        <div class="card">
-            <h3>قسم العبايات</h3>
-            <p>تصاميم عصرية وخامات فاخرة لكل المناسبات.</p>
-            <a href="#" class="btn">تصفح العبايات</a>
+    <!-- قسم المنتجات المعروضة -->
+    <h2 class="section-title">الأكثر مبيعاً ✨</h2>
+    <section class="products-grid">
+        <!-- المنتج الأول -->
+        <div class="product-card">
+            <div class="product-img">[ صورة العباية ]</div>
+            <h3>عباية كلاسيك فاخرة</h3>
+            <p style="font-size:14px; color:#666;">قماش ملكي كوري مع تداخلات حرير</p>
+            <div class="price">250 ر.س</div>
+            <button class="buy-btn">إضافة للسلة</button>
         </div>
-        <div class="card">
-            <h3>حقائب ريزن</h3>
-            <p>قطع فنية فريدة ومصنوعة يدوياً بدقة عالية.</p>
-            <a href="#" class="btn">تصفح الحقائب</a>
+
+        <!-- المنتج الثاني -->
+        <div class="product-card">
+            <div class="product-img">[ صورة الحقيبة ]</div>
+            <h3>حقيبة ريزن يدوية</h3>
+            <p style="font-size:14px; color:#666;">تصميم فريد مدمج بكسر الذهب والورد</p>
+            <div class="price">180 ر.س</div>
+            <button class="buy-btn">إضافة للسلة</button>
         </div>
     </section>
 
@@ -136,10 +196,16 @@
         <p>&copy; 2026 متجر شيكلا. جميع الحقوق محفوظة.</p>
     </footer>
 
-    <!-- كود التشغيل الذكي لإغلاق النافذة -->
     <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            if (!localStorage.getItem("isReturningCustomer")) {
+                document.getElementById('newCustomerPopup').style.display = 'flex';
+            }
+        });
+
         function closePopup() {
-            document.getElementById('welcomePopup').style.display = 'none';
+            document.getElementById('newCustomerPopup').style.display = 'none';
+            localStorage.setItem("isReturningCustomer", "true");
         }
     </script>
 </body>
